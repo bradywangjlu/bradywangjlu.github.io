@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android中几种有可能会导致内存泄露的情况 | bradywang的小窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.Static静态成员导致的内存泄露
+将占用大量内存空间的变量声明为static静态类型。当Activity被销毁的时候，由于静态成员的缘故，所占用的内存空间并没有得到及时的释放，最终导致内存泄漏。所以不要在静态空间中放太大的资源，如果一定要放，需要在结束的时候对其进行释放和清理。
+public class MainActivity extends Activity {
+    private">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android中几种有可能会导致内存泄露的情况">
+<meta property="og:url" content="http://blog.bradywang.com/2015/08/14/android-e4-b8-ad-e5-87-a0-e7-a7-8d-e6-9c-89-e5-8f-af-e8-83-bd-e4-bc-9a-e5-af-bc-e8-87-b4-e5-86-85-e5-ad-98-e6-b3-84-e9-9c-b2-e7-9a-84-e6-83-85-e5-86-b5/index.html">
+<meta property="og:site_name" content="bradywang的小窝">
+<meta property="og:description" content="1.Static静态成员导致的内存泄露
+将占用大量内存空间的变量声明为static静态类型。当Activity被销毁的时候，由于静态成员的缘故，所占用的内存空间并没有得到及时的释放，最终导致内存泄漏。所以不要在静态空间中放太大的资源，如果一定要放，需要在结束的时候对其进行释放和清理。
+public class MainActivity extends Activity {
+    private">
+<meta property="og:updated_time" content="2015-10-22T12:06:31.601Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android中几种有可能会导致内存泄露的情况">
+<meta name="twitter:description" content="1.Static静态成员导致的内存泄露
+将占用大量内存空间的变量声明为static静态类型。当Activity被销毁的时候，由于静态成员的缘故，所占用的内存空间并没有得到及时的释放，最终导致内存泄漏。所以不要在静态空间中放太大的资源，如果一定要放，需要在结束的时候对其进行释放和清理。
+public class MainActivity extends Activity {
+    private">
+  
+    <link rel="alternative" href="/atom.xml" title="bradywang的小窝" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://wwdream-wordpress.stor.sinaapp.com/uploads/2015/08/hdImg_b010b87594c5feffac434fc2aa9bec61.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Brady</a></h1>
+		</hgroup>
+
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/wangdream" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/1215871052/" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wang-wei-37-66" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="/bradywang.jlu@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Brady</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://wwdream-wordpress.stor.sinaapp.com/uploads/2015/08/hdImg_b010b87594c5feffac434fc2aa9bec61.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Brady</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/wangdream" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1215871052/" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wang-wei-37-66" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="/bradywang.jlu@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-android-e4-b8-ad-e5-87-a0-e7-a7-8d-e6-9c-89-e5-8f-af-e8-83-bd-e4-bc-9a-e5-af-bc-e8-87-b4-e5-86-85-e5-ad-98-e6-b3-84-e9-9c-b2-e7-9a-84-e6-83-85-e5-86-b5" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/14/android-e4-b8-ad-e5-87-a0-e7-a7-8d-e6-9c-89-e5-8f-af-e8-83-bd-e4-bc-9a-e5-af-bc-e8-87-b4-e5-86-85-e5-ad-98-e6-b3-84-e9-9c-b2-e7-9a-84-e6-83-85-e5-86-b5/" class="article-date">
+  	<time datetime="2015-08-14T12:38:33.000Z" itemprop="datePublished">2015-08-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android中几种有可能会导致内存泄露的情况
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/未分类/">未分类</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.Static静态成员导致的内存泄露</p>
+<p>将占用大量内存空间的变量声明为static静态类型。当Activity被销毁的时候，由于静态成员的缘故，所占用的内存空间并没有得到及时的释放，最终导致内存泄漏。所以不要在静态空间中放太大的资源，如果一定要放，需要在结束的时候对其进行释放和清理。</p>
+<pre>public class MainActivity extends Activity {
+    private static final int ARRAY_SIZE = 100;
+    private static Drawable[] sTestBitmap = new Drawable[ARRAY_SIZE];
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        for (int i = 0 ; i &lt; ARRAY_SIZE ; i++) {
+            sTestBitmap[i] = getResources().getDrawable(R.drawable.test);
+        }
+        setContentView(R.layout.activity_main);
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        /*for (int i = 0 ; i &lt; ARRAY_SIZE ; i++) {
+            sTestBitmap[i] = null;
+        }
+        sTestBitmap = null;
+        System.gc();*/
+    }
+}
+</pre>
+2.匿名内部类的使用
+
+每一个匿名内部类都持有一个外部类的引用，当我们如果在一个匿名类中启动一个线程，那么它将一直持有外部类的引用，直到线程结束才能将内存空间释放。当我们在MainActivity中启动一个线程，虽然退出了该Activity，但是进程还在运行，MainActivity所占用的内存空间将得不到释放，导致最后的内存泄漏
+<pre>
+public class MainActivity extends Activity {
+    private Drawable mTestBitmap = null;
+    private Thread mThread = null;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true) {
+                }
+            }
+        });
+        mThread.start();
+        mTestBitmap = getResources().getDrawable(R.drawable.test);
+        setContentView(R.layout.activity_main);
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //TODO cancel Thread
+    }
+}
+</pre>
+
+<p>3.Context的滥用</p>
+<pre>
+private static Drawable sBackground;
+
+    @Override  
+    protected void onCreate(Bundle state){
+        super.onCreate(state);
+        TextView label = new TextView(this);  
+        label.setText("Leaks are bad");  
+        if (sBackground == null) {
+            sBackground = getDrawable(R.drawable.large_bitmap);  
+            }
+        label.setBackgroundDrawable(sBackground);  
+        setContentView(label);
+    }
+}
+</pre>
+在这种情况下，Drawble持有Textiview的引用，TextView持有Activity的引用，即使Activity被销毁，内存仍然不会被释放。
+若Context的引用超过其本身生命周期，也会导致内存泄漏，一般用getApplicationContext即可
+
+*   使用Application这种Context类型
+*   对Context的引用不要超过其自身生命周期
+*   慎重使用Static关键字
+*   context里如果有限程，一定在onDestroy中结束掉
+
+4.在Handler中遇到的问题
+当使用内部类创建Handler的时候，Handler会持有一个外部Activity的引用。当Handler中的线程在执行的时候，Activity被GC，这时该线程持有Handler的引用，Handler含有Activity的引用，导致该Activity无法被回收，导致内存泄漏
+解决办法：
+1.通过程序逻辑来判断，在关闭Activity的同时停止线程，Activity就可以正常在合适的时候被回收。如果Handler是被delay的Message持有了引用，那么使用相应的Handler的removeCallbacks()方法，把消息对象从消息队列移除就行了
+2.将Handler声明为静态类，不再持有外部类的引用，所以Activity可以被回收。
+<pre>
+public class MainActivity extends Activity {    
+    private final int MSG_DO_SOMETHING = 0;
+    private SafeHandler mHandler = new SafeHandler(this);
+    private TextView mTextView = null;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mTextView = new TextView(this);
+        Message.obtain(mHandler, MSG_DO_SOMETHING).sendToTarget();
+        mHandler.sendMessageDelayed(Message.obtain(mHandler, MSG_DO_SOMETHING), 1000);
+        setContentView(R.layout.activity_main);
+    }
+    static class SafeHandler extends Handler {
+        WeakReference<mainactivity> mActivityReference;
+        SafeHandler(MainActivity activity) {
+            mActivityReference= new WeakReference<mainactivity>(activity);
+        }
+        @Override
+        public void handleMessage(Message msg) {
+            final MainActivity activity = mActivityReference.get();
+            if (activity != null) {
+                activity.mTextView.setTextColor(Color.WHITE);
+            }
+        }
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //删除所有Message
+        mHandler.removeMessages(MSG_DO_SOMETHING, null);
+        //删除Message.what==MSG_DO_SOMETHING的Message
+        mHandler.removeMessages(MSG_DO_SOMETHING);
+    }
+}
+</mainactivity></mainactivity></pre>
+
+<p>总结：<br>不要让生命周期长于Activity的对象持有到Activity的引用<br>尽量使用Application的Context而不是Activity的Context<br>尽量不要在Activity中使用非静态内部类，因为非静态内部类会隐式持有外部类实例的引用（具体可以查看 细话Java：”失效”的private修饰符 了解）。如果使用静态内部类，将外部实例引用作为弱引用持有。<br>垃圾回收不能解决内存泄露，了解 Android中垃圾回收机制</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/08/14/e6-ad-a3-e5-88-99-e8-a1-a8-e8-be-be-e5-bc-8f-e7-9a-84-e5-ba-94-e7-94-a8-ef-bc-9apattern-e5-92-8cmatcher-e7-b1-bb/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          正则表达式的应用：Pattern和Matcher类
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/07/13/findviewbyid-e4-b8-ad-e8-bf-94-e5-9b-9e-e5-80-bc-e4-b8-banull-e7-9a-84-e5-87-a0-e7-a7-8d-e6-83-85-e5-86-b5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">findViewById中返回值为null的几种情况</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="android-e4-b8-ad-e5-87-a0-e7-a7-8d-e6-9c-89-e5-8f-af-e8-83-bd-e4-bc-9a-e5-af-bc-e8-87-b4-e5-86-85-e5-ad-98-e6-b3-84-e9-9c-b2-e7-9a-84-e6-83-85-e5-86-b5" data-title="Android中几种有可能会导致内存泄露的情况" data-url="http://blog.bradywang.com/2015/08/14/android-e4-b8-ad-e5-87-a0-e7-a7-8d-e6-9c-89-e5-8f-af-e8-83-bd-e4-bc-9a-e5-af-bc-e8-87-b4-e5-86-85-e5-ad-98-e6-b3-84-e9-9c-b2-e7-9a-84-e6-83-85-e5-86-b5/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Brady
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

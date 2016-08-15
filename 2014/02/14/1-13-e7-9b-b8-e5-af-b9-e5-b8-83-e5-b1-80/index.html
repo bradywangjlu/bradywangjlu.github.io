@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>1.13 相对布局 | bradywang的小窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、什么是相对布局
+1.相对布局是另外一种空间摆放方式
+2.相对布局是通过指定当前控件与兄弟控件或者是父控件之间的相对位置，从而达到控制控件位置的目的
+在Android 的UI方面，布局嵌套的越多，性能相对越差
+没有指定默认位置，默认放置在左上角
+如果第二个TextView没有指定位置，则位置会与第一个重叠、
+第二个控件基于第一个空间而决定
+layout_toRightView：对应一个已经存在的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.13 相对布局">
+<meta property="og:url" content="http://blog.bradywang.com/2014/02/14/1-13-e7-9b-b8-e5-af-b9-e5-b8-83-e5-b1-80/index.html">
+<meta property="og:site_name" content="bradywang的小窝">
+<meta property="og:description" content="一、什么是相对布局
+1.相对布局是另外一种空间摆放方式
+2.相对布局是通过指定当前控件与兄弟控件或者是父控件之间的相对位置，从而达到控制控件位置的目的
+在Android 的UI方面，布局嵌套的越多，性能相对越差
+没有指定默认位置，默认放置在左上角
+如果第二个TextView没有指定位置，则位置会与第一个重叠、
+第二个控件基于第一个空间而决定
+layout_toRightView：对应一个已经存在的">
+<meta property="og:updated_time" content="2015-10-22T12:06:31.601Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1.13 相对布局">
+<meta name="twitter:description" content="一、什么是相对布局
+1.相对布局是另外一种空间摆放方式
+2.相对布局是通过指定当前控件与兄弟控件或者是父控件之间的相对位置，从而达到控制控件位置的目的
+在Android 的UI方面，布局嵌套的越多，性能相对越差
+没有指定默认位置，默认放置在左上角
+如果第二个TextView没有指定位置，则位置会与第一个重叠、
+第二个控件基于第一个空间而决定
+layout_toRightView：对应一个已经存在的">
+  
+    <link rel="alternative" href="/atom.xml" title="bradywang的小窝" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://wwdream-wordpress.stor.sinaapp.com/uploads/2015/08/hdImg_b010b87594c5feffac434fc2aa9bec61.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Brady</a></h1>
+		</hgroup>
+
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/wangdream" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/1215871052/" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wang-wei-37-66" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="/bradywang.jlu@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Brady</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://wwdream-wordpress.stor.sinaapp.com/uploads/2015/08/hdImg_b010b87594c5feffac434fc2aa9bec61.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Brady</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/wangdream" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1215871052/" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wang-wei-37-66" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="/bradywang.jlu@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-1-13-e7-9b-b8-e5-af-b9-e5-b8-83-e5-b1-80" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/02/14/1-13-e7-9b-b8-e5-af-b9-e5-b8-83-e5-b1-80/" class="article-date">
+  	<time datetime="2014-02-14T09:45:10.000Z" itemprop="datePublished">2014-02-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      1.13 相对布局
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Android/">Android</a><a class="article-category-link" href="/categories/Android/未分类/">未分类</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、什么是相对布局</p>
+<p><div>1.相对布局是另外一种空间摆放方式</div></p>
+<p><div>2.相对布局是通过指定当前控件与兄弟控件或者是父控件之间的相对位置，从而达到控制控件位置的目的</div></p>
+<p><div>在Android 的UI方面，布局嵌套的越多，性能相对越差</div></p>
+<p><div>没有指定默认位置，默认放置在左上角</div></p>
+<p><div>如果第二个TextView没有指定位置，则位置会与第一个重叠、</div></p>
+<p><div>第二个控件基于第一个空间而决定</div></p>
+<p><div>layout_toRightView：对应一个已经存在的控件的ID</div></p>
+<p><div></div></p>
+<p><div>        android:layout_toRightOf=”@id/firstView”</div><br></p>
+<p><div>layout_below 将当前控件放在其的下面</div></p>
+<p><div>layout_above将当前控件放在其的上面</div></p>
+<p><div>二、第二组相对布局属性</div></p>
+<p><div>1.android：layout_alignLeft   当前控件的左边缘对其到该控件的左边缘</div></p>
+<p><div>2.android:layout_alignRight 右</div></p>
+<p><div>3.android:layout_alignTop 上</div></p>
+<p><div>4.android:layout_alignButtom 下</div></p>
+<p><div>四个方向的对其</div></p>
+<p><div>总结：什么是相对布局、相对布局的好处</div></p>
+<p><div>好处:从某种情况提高性能，减少了布局的嵌套</div></p>
+<p><div> </div></p>
+<pre lang="java">package com.dream.s01_13_relativelayout;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+
+public class MainActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+}</pre>
+<pre lang="java">
+<relativelayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".MainActivity">
+
+    <textview android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="#FF0000" android:text="第一个TextView" android:id="@+id/firstView">"
+
+    <textview android:layout_alignright="@id/firstView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="#00FF00" android:text="第二个">
+
+</textview></textview></relativelayout>
+
+    </pre>
+二、什么是基准线（baseline）
+基准线：为了保证印刷字母的整齐而划定的线
+
+基准线对其：另一个TextView的基准线和这个一模一样
+android:layout_alignBaseline="@id/firstView"
+android:layout_toRightOf="@id/firstView"
+
+当前控件基准线和另一个控件基准线存在相同的高度
+三、与父控件边缘对齐
+1.android:layout_alignParentLeft
+2.android:layout_alignParentRight
+3.android:layout_alignParentTop 对齐到
+4.android:layout_alignParentBottom
+android:layout_alignParentRight="true"
+是否对齐到父控件右边
+四、对齐至父控件的中央
+1.android:layout_centerInParent
+2.android:layout_centerHorizontal
+3.android:layout_centerVertical
+<pre lang="java">package com.example.s01_e14_relativelayout;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+
+public class MainActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+}</pre>
+<pre lang="java">
+<relativelayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent">
+    <textview android:id="@+id/firstView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hello" android:textsize="40sp" android:layout_alignparentright="true" android:layout_alignparentleft="true" android:background="#FFFFFF">
+
+</textview></relativelayout>
+</pre>
+相对布局新特性
+<div>1.android:layout_alignStart</div>
+<div>2:android:layout_alignEnd</div>
+<div>3.android:layout_alignParentStart</div>
+<div>4.android:layout_alignPanrentEnd</div>
+<div>android：hint：设置隐藏字符</div>
+<div>android：inputType:设置输入字符类型</div>
+<div>android：padding：设置内边距</div>
+<pre lang="java">
+<relativelayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#FFFFFF">
+
+    <textview android:id="@+id/firstView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:backgroud="#ff0000" android:text="Hello">
+    <textview android:id="@+id/secondView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="#00ff00" android:layout_below="@id/firstView" android:layout_alignend="@id/firstView" android:text="abc">
+</textview></textview></relativelayout>
+</pre>
+<pre lang="java">
+<relativelayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:padding="15dp">
+
+    <textview android:id="@+id/lableView" android:layout_width="match_parent" android:gravity="center" android:layout_height="wrap_content" android:text="登陆界面">
+       <edittext android:id="@+id/usernameText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignparentleft="true" android:layout_alignparentright="true" android:hint="username" android:layout_below="@id/lableView">
+    <edittext android:id="@+id/passwordText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="password" android:inputtype="textPassword" android:layout_below="@id/usernameText" android:layout_alignleft="@id/usernameText" android:layout_alignright="@id/usernameText">
+    <button android:id="@+id/cancelButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/passwordText" android:layout_alignparentright="true" android:text="取消">
+    </button><button android:id="@+id/okButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toleftof="@+id/cancelButton" android:layout_alignbottom="@+id/cancelButton" android:text="确定">
+</button></edittext></edittext></textview></relativelayout>
+</pre>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/02/15/1-14-e6-97-b6-e9-97-b4-e4-b8-8e-e6-97-a5-e6-9c-9f/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          1.14 时间与日期
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/02/14/1-12-e6-b7-b1-e5-85-a5linearlayout/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">1.12 深入LinearLayout</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="1-13-e7-9b-b8-e5-af-b9-e5-b8-83-e5-b1-80" data-title="1.13 相对布局" data-url="http://blog.bradywang.com/2014/02/14/1-13-e7-9b-b8-e5-af-b9-e5-b8-83-e5-b1-80/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Brady
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

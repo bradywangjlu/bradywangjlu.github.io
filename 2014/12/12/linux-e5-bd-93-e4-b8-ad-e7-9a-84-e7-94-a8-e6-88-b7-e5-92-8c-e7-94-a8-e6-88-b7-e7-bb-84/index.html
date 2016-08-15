@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux当中的用户和用户组 | bradywang的小窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Linux对文件管理可能说是做的比较多了，对于用户来说，分为文件的所有者、组用户还有其他人。文件的所有者，顾名思义，就是所有文件的人，也就是创建或者拥有这个文件的人。对于组用户来说，一个用户可以隶属于一个或者多个用户组，文件可以针对于文件所隶属于的用户组设定相应的权限，其他人，也就顾名思义，是既不是用户本人，也不是用户所属的用户组里面的任何人。这里面要特别留意root用户可以访问任何内容
+对于Li">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux当中的用户和用户组">
+<meta property="og:url" content="http://blog.bradywang.com/2014/12/12/linux-e5-bd-93-e4-b8-ad-e7-9a-84-e7-94-a8-e6-88-b7-e5-92-8c-e7-94-a8-e6-88-b7-e7-bb-84/index.html">
+<meta property="og:site_name" content="bradywang的小窝">
+<meta property="og:description" content="Linux对文件管理可能说是做的比较多了，对于用户来说，分为文件的所有者、组用户还有其他人。文件的所有者，顾名思义，就是所有文件的人，也就是创建或者拥有这个文件的人。对于组用户来说，一个用户可以隶属于一个或者多个用户组，文件可以针对于文件所隶属于的用户组设定相应的权限，其他人，也就顾名思义，是既不是用户本人，也不是用户所属的用户组里面的任何人。这里面要特别留意root用户可以访问任何内容
+对于Li">
+<meta property="og:updated_time" content="2015-10-22T12:06:31.601Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux当中的用户和用户组">
+<meta name="twitter:description" content="Linux对文件管理可能说是做的比较多了，对于用户来说，分为文件的所有者、组用户还有其他人。文件的所有者，顾名思义，就是所有文件的人，也就是创建或者拥有这个文件的人。对于组用户来说，一个用户可以隶属于一个或者多个用户组，文件可以针对于文件所隶属于的用户组设定相应的权限，其他人，也就顾名思义，是既不是用户本人，也不是用户所属的用户组里面的任何人。这里面要特别留意root用户可以访问任何内容
+对于Li">
+  
+    <link rel="alternative" href="/atom.xml" title="bradywang的小窝" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://wwdream-wordpress.stor.sinaapp.com/uploads/2015/08/hdImg_b010b87594c5feffac434fc2aa9bec61.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Brady</a></h1>
+		</hgroup>
+
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/wangdream" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/1215871052/" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wang-wei-37-66" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="/bradywang.jlu@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Brady</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://wwdream-wordpress.stor.sinaapp.com/uploads/2015/08/hdImg_b010b87594c5feffac434fc2aa9bec61.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Brady</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/wangdream" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1215871052/" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wang-wei-37-66" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="/bradywang.jlu@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-linux-e5-bd-93-e4-b8-ad-e7-9a-84-e7-94-a8-e6-88-b7-e5-92-8c-e7-94-a8-e6-88-b7-e7-bb-84" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/12/12/linux-e5-bd-93-e4-b8-ad-e7-9a-84-e7-94-a8-e6-88-b7-e5-92-8c-e7-94-a8-e6-88-b7-e7-bb-84/" class="article-date">
+  	<time datetime="2014-12-12T14:56:13.000Z" itemprop="datePublished">2014-12-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux当中的用户和用户组
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Linux/">Linux</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Linux对文件管理可能说是做的比较多了，对于用户来说，分为文件的所有者、组用户还有其他人。文件的所有者，顾名思义，就是所有文件的人，也就是创建或者拥有这个文件的人。对于组用户来说，一个用户可以隶属于一个或者多个用户组，文件可以针对于文件所隶属于的用户组设定相应的权限，其他人，也就顾名思义，是既不是用户本人，也不是用户所属的用户组里面的任何人。这里面要特别留意root用户可以访问任何内容</p>
+<p>对于Linux当中的文件权限，也分为了RWX三种，分别也就是可读、可写、可执行的意思，我们先执行一下ls -al命令，对文件系统进行查看</p>
+<p><pre> $ls -al<br><strong>drwxrwxr-x</strong>  2 dream dream 4096 12月 12 20:06 .<br>drwxr-xr-x 43 dream dream 4096 12月 12 20:06 ..<br><strong>-rwxrwxr-x</strong>  1 dream dream 9160 12月 12 20:00 2<br>-rw-rw-r–  1 dream dream   90 12月 12 20:00 2.cpp<br>-rw-rw-r–  1 dream dream 2648 12月 12 20:00 2.o<br>……………………………………………………………………<br><strong>lrwxrwxrwx</strong>   1 root root       23 11月 29 00:51 vtrgb -&gt; /etc/alternatives/vtrgb<br>-rw-r–r–   1 root root     4812  2月  8  2014 wgetrc<br>-rw-r–r–   1 root root     1343  1月 10  2007 wodim.conf<br>drwxr-xr-x   2 root root     4096 10月 23 03:10 wpa_supplicant<br>drwxr-xr-x  11 root root     4096 11月 28 18:48 X11<br>drwxr-xr-x   5 root root     4096 10月 23 03:14 xdg<br>drwxr-xr-x   3 root root     4096 12月 12 16:26 xml<br>drwxr-xr-x   2 xrdp xrdp     4096 12月  7 18:27 xrdp<br>drwxr-xr-x   2 root root     4096 10月 23 03:13 xul-ext<br>-rw-r–r–   1 root root      349  9月 11 22:18 zsh_command_not_found<br></pre><br>我们通过 这些信息对对文件进行分析。<br>首先第一列代表的是文件类型以及文件权限，这一块我们下一步在进行介绍。<br>第二列代表文件的链接数，代表由多少各iNode结点链接到该文件上面<br>第三列表示文件所属的用户，第四列表示用户文件所属的用户组，第五列代表文件的修改日期，第六列表示文件名<br>第一列中第一个字符表示文件类型，其中</p>
+<ul>
+<li>若是[d]则是目录</li>
+<li>若是[-]则是文件</li>
+<li>若是[l]则是链接文件</li>
+<li>若是[b]表示设备文件里面可供存储的接口设备</li>
+<li><p>若是[c]表示设备文件里面的穿行端口设备，例如鼠标、键盘<br>然后接下来就是三组关于文件权限的描述。对于文件描述的都是rwx，分别代表可读、可写、可执行<br>三组分别代表</p>
+</li>
+<li><p>表示文件的所有者</p>
+</li>
+<li>表示文件的用户组</li>
+<li><p>表示其他人<br>改变文件的属性和权限<br>1.使用chgrp改变文件所属的组<br>语法：<br><pre>chgrp +组名+文件名<br></pre><br><pre>root@dream-Inspiron-5520:~# touch test<br>root@dream-Inspiron-5520:~# ls -al test<br>-rw-r–r– 1 root root 0 12月 12 20:51 test<br>root@dream-Inspiron-5520:~# chgrp dream test<br>root@dream-Inspiron-5520:~# ls -al test<br>-rw-r–r– 1 root dream 0 12月 12 20:51 test<br></pre><br>2.chown：改变文件的所有者<br>语法：<br><pre>chown+用户名+文件名<br></pre><br><pre>root@dream-Inspiron-5520:~# touch test1<br>root@dream-Inspiron-5520:~# ls -l test1<br>-rw-r–r– 1 root root 0 12月 12 20:56 test1<br>root@dream-Inspiron-5520:~# chown dream test1<br>root@dream-Inspiron-5520:~# ls -l test1<br>-rw-r–r– 1 dream root 0 12月 12 20:56 test1<br></pre><br>在使用cp命令的时候会默认复制文件的属性和权限，所以需要使用chgrp或者chown命令改变文件的所有者<br>3.chmod<br>这个命令是改变文件的权限时使用的，其中给rwx各分配了一个权值，其中r是4，w是2，x是1，通过权值可以计算出必要的权值。<br><pre><br>root@dream-Inspiron-5520:~# touch test2<br>root@dream-Inspiron-5520:~# ls -l test2<br>-rw-r–r– 1 root root 0 12月 12 21:00 test2<br>root@dream-Inspiron-5520:~# chmod 775 test2<br>root@dream-Inspiron-5520:~# ls -l test2<br>-rwxrwxr-x 1 root root 0 12月 12 21:00 test2<br>root@dream-Inspiron-5520:~#<br></pre><br>可以很容易发现，test2文件增加了可执行的权限<br>其实，文件的权限也可以这么玩<br><pre><br>root@dream-Inspiron-5520:~# touch test3<br>root@dream-Inspiron-5520:~# ls -l test3<br>-rw-r–r– 1 root root 0 12月 12 21:03 test3<br>root@dream-Inspiron-5520:~# chmod +x test3<br>root@dream-Inspiron-5520:~# ls -l test3<br>-rwxr-xr-x 1 root root 0 12月 12 21:03 test3<br>root@dream-Inspiron-5520:~# chmod -r test3<br>root@dream-Inspiron-5520:~# ls -l test3<br>–wx–x–x 1 root root 0 12月 12 21:03 test3<br>root@dream-Inspiron-5520:~# chmod u=rwx,g=rx,o=r test3<br>root@dream-Inspiron-5520:~# ls -l test3<br>-rwxr-xr– 1 root root 0 12月 12 21:03 test3<br></pre><br>下面来介绍一下文件中的各种权限的意义。顾名思义，rw指的是文件的可读可写，没有太多说得，x代表的是文件可以被执行，假如文件含有x属性，我们就可以用./filename来运行他啦。<br>重点来看一看对文件夹的权限概念<br>文件夹的r代表了可以对文件结构读出来，也就意味着我们可以通过ls命令读出文件夹当中的内容<br>文件夹的w代表了文件夹可写，假设一个文件夹对某个用户来说是可以写入的，这里的写入代表创建或者修改文件，例如，一个文件的属性对该用户来说是不可写的，但是目录对该用户可写，用户还是可以直接对文件进行删除或者重命名操作<br>文件夹的x代表了可以将一个目录设置为工作目录，例如我们可以利用cd命令进入一个文件夹并且将其设置为我们的工作目录。<br>下面说一下几个目录的作用<br><pre><br>root@dream-Inspiron-5520:~# ls -l /<br>总用量 104<br>drwxr-xr-x   2 root root  4096 12月  8 11:21 bin<br>drwxr-xr-x   4 root root  4096 12月  8 11:24 boot<br>drwxrwxr-x   2 root root  4096 11月 29 00:54 cdrom<br>drwxr-xr-x  16 root root  4300 12月 12 19:16 dev<br>drwxr-xr-x 140 root root 12288 12月 12 19:56 etc<br>drwxr-xr-x   3 root root  4096 11月 29 00:54 home<br>lrwxrwxrwx   1 root root    33 12月  8 11:23 initrd.img -&gt; boot/initrd.img-3.16.0-26-generic<br>lrwxrwxrwx   1 root root    33 12月  6 22:21 initrd.img.old -&gt; boot/initrd.img-3.16.0-25-generic<br>drwxr-xr-x  24 root root  4096 12月 12 19:54 lib<br>drwxr-xr-x   2 root root  4096 12月 12 19:54 lib32<br>drwxr-xr-x   2 root root  4096 12月 12 11:53 lib64<br>drwx——   2 root root 16384 11月 29 00:51 lost+found<br>drwxr-xr-x   3 root root  4096 11月 29 01:00 media<br>drwxr-xr-x   2 root root  4096 10月 16 08:42 mnt<br>drwxr-xr-x   6 root root  4096 12月 12 12:04 opt<br>dr-xr-xr-x 272 root root     0 12月 13  2014 proc<br>drwx——   4 root root  4096 12月 12 21:03 root<br>drwxr-xr-x  28 root root   880 12月 12 19:55 run<br>drwxr-xr-x   2 root root 12288 12月 12 11:53 sbin<br>drwxr-xr-x   2 root root  4096 10月 23 02:35 srv<br>dr-xr-xr-x  13 root root     0 12月 13  2014 sys<br>drwxrwxrwt  11 root root  4096 12月 12 20:52 tmp<br>drwxr-xr-x   3 root root  4096 11月 28 19:58 u01<br>drwxr-xr-x  11 root root  4096 12月 12 19:54 usr<br>drwxr-xr-x  13 root root  4096 10月 23 03:20 var<br>lrwxrwxrwx   1 root root    30 12月  8 11:23 vmlinuz -&gt; boot/vmlinuz-3.16.0-26-generic<br>lrwxrwxrwx   1 root root    30 12月  6 22:21 vmlinuz.old -&gt; boot/vmlinuz-3.16.0-25-generic<br></pre><br>下面说一下几个目录的作用：<br><pre><br>/bin：放置很多可执行文件的目录，可以在单用户维护模式下还能够被使用<br>/boot：放置开机会用到的文件，包括Linux内核以及开机所需的配置文件<br>/dev：存放设备接口文件<br>/etc：村范系统主要的配置文件，包括账号密码文件、各类服务的起始文件等<br>/home：系统默认的主文件夹<br>/lib：存放系统需要的函数库<br>/media：存放各种可删除的设备<br>/mnt：挂在某些额外的设备<br>/opt：存放第三方软件的目录<br>/root：root用户的主文件夹<br>/sbin：只有root用户才能使用的命令一般放到这个目录<br>/srv：web service 启动之后的根目录<br>/tmp：放置系统的临时文件的目录<br>/usr ：UNIX Software Resources ，<br>/var：表示系统运行过程中逐渐变大的目录<br></pre><br>$PATH变量：<br><pre><br>dream@dream-Inspiron-5520:~$ echo $PATH<br>/usr/local/jdk1.8.0_25/bin:/usr/local/jdk1.8.0_25/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games<br></pre><br>和windows的环境变量差不多，也就是搜索路径的意思，当Linux需要文件，会首先在当前目录搜索，然后在PATH目录下搜索。对PATH变量的修改也很简单，直接对变量进行赋值就可以了，不过要注意的是，PATH变量的修改只对当前shell有效<br><pre><br>dream@dream-Inspiron-5520:~$ echo $PATH<br>/usr/local/jdk1.8.0_25/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games<br>dream@dream-Inspiron-5520:~$ bash<br>dream@dream-Inspiron-5520:~$ PATH=$PATH:/root<br>dream@dream-Inspiron-5520:~$ echo $PATH<br>/usr/local/jdk1.8.0_25/bin:/usr/local/jdk1.8.0_25/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/root<br>dream@dream-Inspiron-5520:~$ exit<br>exit<br>dream@dream-Inspiron-5520:~$ echo $PATH<br>/usr/local/jdk1.8.0_25/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games<br></pre><br>umask:制定目前用户在新建文件或目录的时候权限默认值<br><pre><br>dream@dream-Inspiron-5520:~$ umask<br>0002<br></pre><br><pre><br>dream@dream-Inspiron-5520:~$ umask<br>0002<br>dream@dream-Inspiron-5520:~$ touch newfile<br>dream@dream-Inspiron-5520:~$ ls -l newfile<br>-rw-rw-r– 1 dream dream 0 12月 12 22:19 newfile<br>dream@dream-Inspiron-5520:~$ umask 022<br>dream@dream-Inspiron-5520:~$ touch newfile1<br>-rw-rw-r– 1 dream dream 0 12月 12 22:19 newfile<br>dream@dream-Inspiron-5520:~$ ls -l newfile1<br>-rw-r–r– 1 dream dream 0 12月 12 22:19 newfile1<br>dream@dream-Inspiron-5520:~$ umask<br>0022<br></pre><br>从刚才的例子我们可以发现，用户新建文件的权限等于777-umask<br>让用户能进入某目录成为“可工作目录”的基本权限是什么</p>
+</li>
+<li><p>可使用的命令：例如cd等切换工作目录的命令</p>
+</li>
+<li>目录所需权限：用户对这个目录至少需要x的权限</li>
+<li><p>额外需求：如果用户想要在这个目录内利用ls查阅文件名，则用户对此目录还需要r的权限<br>用户在某个目录读取一个文件的基本权限是什么：</p>
+</li>
+<li><p>可使用的命令：cat、more、less等</p>
+</li>
+<li>目录所需权限：用户对这个目录至少需要x权限</li>
+<li><p>文件所需权限：用户对文件至少需要r的权限才行<br>用户可以修改一个文件的基本权限是什么</p>
+</li>
+<li><p>可使用的命令：nano或者vi等</p>
+</li>
+<li>目录所需权限：用户在该文件的目录至少需要x权限</li>
+<li><p>文件所需权限：用户对该文件至少需要r，w权限。<br>一个用户可以创建一个文件的基本权限是什么</p>
+</li>
+<li><p>目录所需权限：用户在该目录药具有w，x权限</p>
+</li>
+</ul>
+<p>让用户进入某目录并执行该目录下的某个命令的基本权限是什么</p>
+<ul>
+<li>目录所需权限：用户在该目录至少拥有x权限</li>
+<li>文件所需权限：用户在该文件至少需要有x的权限</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/13/linux-e4-b8-8bwhich-e3-80-81whereis-e3-80-81locate-e3-80-81find-e5-91-bd-e4-bb-a4-e7-9a-84-e5-8c-ba-e5-88-ab/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Linux下which、whereis、locate、find 命令的区别 
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/12/linux-e5-bd-93-e4-b8-ad-e4-b8-80-e4-ba-9b-e5-b8-b8-e7-94-a8-e7-9a-84-e5-bf-ab-e6-8d-b7-e9-94-ae/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux当中一些常用的快捷键</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="linux-e5-bd-93-e4-b8-ad-e7-9a-84-e7-94-a8-e6-88-b7-e5-92-8c-e7-94-a8-e6-88-b7-e7-bb-84" data-title="Linux当中的用户和用户组" data-url="http://blog.bradywang.com/2014/12/12/linux-e5-bd-93-e4-b8-ad-e7-9a-84-e7-94-a8-e6-88-b7-e5-92-8c-e7-94-a8-e6-88-b7-e7-bb-84/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Brady
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

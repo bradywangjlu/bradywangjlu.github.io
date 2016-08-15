@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>1.9 多选按钮 | bradywang的小窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;nbsp;
+一、主要内容
+
+多选按钮（CheckBox）的基本概念
+
+&amp;lt;CheckBox/&amp;gt;与CheckBox
+
+OnClickListener与OnCheckedChangeListener监听器
+
+
+二、什么是CheckBox
+1.在XML文件当中使用&amp;lt;CheckBox/&amp;gt;标签
+2.在代码中使用CheckBox的对象表示
+3.常用OnClickListener与OnC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.9 多选按钮">
+<meta property="og:url" content="http://blog.bradywang.com/2014/02/14/37/index.html">
+<meta property="og:site_name" content="bradywang的小窝">
+<meta property="og:description" content="&amp;nbsp;
+一、主要内容
+
+多选按钮（CheckBox）的基本概念
+
+&amp;lt;CheckBox/&amp;gt;与CheckBox
+
+OnClickListener与OnCheckedChangeListener监听器
+
+
+二、什么是CheckBox
+1.在XML文件当中使用&amp;lt;CheckBox/&amp;gt;标签
+2.在代码中使用CheckBox的对象表示
+3.常用OnClickListener与OnC">
+<meta property="og:updated_time" content="2015-10-22T12:06:31.597Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1.9 多选按钮">
+<meta name="twitter:description" content="&amp;nbsp;
+一、主要内容
+
+多选按钮（CheckBox）的基本概念
+
+&amp;lt;CheckBox/&amp;gt;与CheckBox
+
+OnClickListener与OnCheckedChangeListener监听器
+
+
+二、什么是CheckBox
+1.在XML文件当中使用&amp;lt;CheckBox/&amp;gt;标签
+2.在代码中使用CheckBox的对象表示
+3.常用OnClickListener与OnC">
+  
+    <link rel="alternative" href="/atom.xml" title="bradywang的小窝" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://wwdream-wordpress.stor.sinaapp.com/uploads/2015/08/hdImg_b010b87594c5feffac434fc2aa9bec61.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Brady</a></h1>
+		</hgroup>
+
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/wangdream" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/1215871052/" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wang-wei-37-66" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="/bradywang.jlu@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Brady</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://wwdream-wordpress.stor.sinaapp.com/uploads/2015/08/hdImg_b010b87594c5feffac434fc2aa9bec61.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Brady</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/wangdream" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1215871052/" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wang-wei-37-66" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="/bradywang.jlu@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-37" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/02/14/37/" class="article-date">
+  	<time datetime="2014-02-14T08:24:22.000Z" itemprop="datePublished">2014-02-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      1.9 多选按钮
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Android/">Android</a><a class="article-category-link" href="/categories/Android/未分类/">未分类</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&nbsp;</p>
+<p>一、主要内容</p>
+<ol>
+<li><p>多选按钮（CheckBox）的基本概念</p>
+</li>
+<li><p>&lt;CheckBox/&gt;与CheckBox</p>
+</li>
+<li><p>OnClickListener与OnCheckedChangeListener监听器</p>
+</li>
+</ol>
+<p>二、什么是CheckBox</p>
+<p>1.在XML文件当中使用&lt;CheckBox/&gt;标签</p>
+<p>2.在代码中使用CheckBox的对象表示</p>
+<p>3.常用OnClickListener与OnCheckedChangeListener监听器</p>
+<p>Onclicklistener：调用参数View指的是调用该参数的对象</p>
+<p>通过Id找控件：findVIewById</p>
+<p>通过控件找id：getId</p>
+<p>checkBox.isChecked（）——该按钮是否被选中</p>
+<p>oncheckedChangeListener：有返回值确定是否被选中</p>
+<p><strong>public</strong> <strong>void</strong> onCheckedChanged(CompoundButton buttonView,             <strong>boolean</strong> isChecked)</p>
+<p>buttonView：传进来的View</p>
+<p>isChecked：选中是否选中</p>
+<p>onclickedlistener:被点击触发状态</p>
+<p>onCheckedChangeListener：选中状态改变的时候才触发</p>
+<pre lang="java">
+package com.dream.s01_e09_checkbox;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+
+public class MainActivity extends Activity {
+    private CheckBox eatBox;
+    private CheckBox sleepBox;
+    private CheckBox dotaBox;
+    private CheckBox allSelected;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        eatBox = (CheckBox)findViewById(R.id.datId);
+        sleepBox = (CheckBox)findViewById(R.id.sleepId);
+        dotaBox = (CheckBox)findViewById(R.id.dotaId);
+        allSelected = (CheckBox)findViewById(R.id.allSelect);
+        //onBoxClickListener listener = new onBoxClickListener();
+        checkBoxListener listener = new checkBoxListener();
+        eatBox.setOnCheckedChangeListener(listener);
+        sleepBox.setOnCheckedChangeListener(listener);
+        dotaBox.setOnCheckedChangeListener(listener);
+        allSelected.setOnCheckedChangeListener(listener);
+
+        //eatBox.setOnClickListener(listener);
+        //sleepBox.setOnClickListener(listener);
+        //dotaBox.setOnClickListener(listener);
+    }
+    //onclickedlistener的使用方法
+    /*class onBoxClickListener implements OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            // TODO Auto-generated method stub
+            System.out.println("Checkbox is Clicked");
+            System.out.println("id--->"+view.getId());
+            CheckBox box = (CheckBox)view;
+            if(view.getId()==R.id.datId){
+                System.out.println("eatBox");
+            }
+            else if(view.getId() == R.id.sleepId){
+                System.out.println("sleepBox");
+            }
+            else if(view.getId() == R.id.dotaId){
+                System.out.println("dotaBox");
+            }
+            if(box.isChecked()){
+                System.out.println("Is checked");
+                }
+            else
+                System.out.println("UnChecked");
+
+        }
+
+    }*/
+    class checkBoxListener implements OnCheckedChangeListener{
+
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView,
+                boolean isChecked) {
+            // TODO Auto-generated method stub
+            if(buttonView.getId()==R.id.datId)
+                System.out.println("eatID");
+            else if(buttonView.getId()==R.id.sleepId)
+                System.out.println("sleepId");
+            else if(buttonView.getId()==R.id.dotaId)
+                System.out.println("dotaId");
+            else if(buttonView.getId()==R.id.allSelect){
+                eatBox.setChecked(allSelected.isChecked());
+                sleepBox.setChecked(allSelected.isChecked());
+                dotaBox.setChecked(allSelected.isChecked());
+                if(allSelected.isChecked())
+                    allSelected.setText("取消全选");
+                else
+                    allSelected.setText("全选");
+
+            }
+            /*if(isChecked)
+                System.out.println("checked");
+            else
+                System.out.println("unchecked");
+*/
+        }
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+}
+</pre>
+<pre lang="java">
+<linearlayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" tools:context=".MainActivity">
+
+    <checkbox android:id="@+id/datId" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="吃饭">
+    <checkbox android:id="@+id/sleepId" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="睡觉">
+     <checkbox android:id="@+id/dotaId" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="dota">
+    <checkbox android:id="@+id/allSelect" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="全选">
+</checkbox></checkbox></checkbox></checkbox></linearlayout>
+</pre>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/02/14/1-10-e5-8d-95-e9-80-89-e6-8c-89-e9-92-ae/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          1.10 单选按钮
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/02/14/33/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">1.8 长度单位与内外边距</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="37" data-title="1.9 多选按钮" data-url="http://blog.bradywang.com/2014/02/14/37/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Brady
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

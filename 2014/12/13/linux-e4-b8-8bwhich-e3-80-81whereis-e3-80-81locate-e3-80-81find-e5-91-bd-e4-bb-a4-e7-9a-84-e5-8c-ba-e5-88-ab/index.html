@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux下which、whereis、locate、find 命令的区别  | bradywang的小窝</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="转自http://312788172.iteye.com/blog/730280
+我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索。这些是从网上找到的资料，因为有时很长时间不会用到，当要用的时候经常弄混了，所以放到这里方便使用。which       查看可执行文件的位置whereis    查看文件的位置locate       配 合数据库查看文件位置fin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux下which、whereis、locate、find 命令的区别 ">
+<meta property="og:url" content="http://blog.bradywang.com/2014/12/13/linux-e4-b8-8bwhich-e3-80-81whereis-e3-80-81locate-e3-80-81find-e5-91-bd-e4-bb-a4-e7-9a-84-e5-8c-ba-e5-88-ab/index.html">
+<meta property="og:site_name" content="bradywang的小窝">
+<meta property="og:description" content="转自http://312788172.iteye.com/blog/730280
+我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索。这些是从网上找到的资料，因为有时很长时间不会用到，当要用的时候经常弄混了，所以放到这里方便使用。which       查看可执行文件的位置whereis    查看文件的位置locate       配 合数据库查看文件位置fin">
+<meta property="og:updated_time" content="2015-10-22T12:06:31.601Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux下which、whereis、locate、find 命令的区别 ">
+<meta name="twitter:description" content="转自http://312788172.iteye.com/blog/730280
+我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索。这些是从网上找到的资料，因为有时很长时间不会用到，当要用的时候经常弄混了，所以放到这里方便使用。which       查看可执行文件的位置whereis    查看文件的位置locate       配 合数据库查看文件位置fin">
+  
+    <link rel="alternative" href="/atom.xml" title="bradywang的小窝" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://wwdream-wordpress.stor.sinaapp.com/uploads/2015/08/hdImg_b010b87594c5feffac434fc2aa9bec61.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Brady</a></h1>
+		</hgroup>
+
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/wangdream" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/1215871052/" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wang-wei-37-66" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="/bradywang.jlu@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Brady</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://wwdream-wordpress.stor.sinaapp.com/uploads/2015/08/hdImg_b010b87594c5feffac434fc2aa9bec61.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Brady</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/wangdream" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1215871052/" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/wang-wei-37-66" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="/bradywang.jlu@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-linux-e4-b8-8bwhich-e3-80-81whereis-e3-80-81locate-e3-80-81find-e5-91-bd-e4-bb-a4-e7-9a-84-e5-8c-ba-e5-88-ab" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/12/13/linux-e4-b8-8bwhich-e3-80-81whereis-e3-80-81locate-e3-80-81find-e5-91-bd-e4-bb-a4-e7-9a-84-e5-8c-ba-e5-88-ab/" class="article-date">
+  	<time datetime="2014-12-13T12:58:47.000Z" itemprop="datePublished">2014-12-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux下which、whereis、locate、find 命令的区别 
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/未分类/">未分类</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>转自<a href="http://312788172.iteye.com/blog/730280" target="_blank" rel="external">http://312788172.iteye.com/blog/730280</a></p>
+<p>我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索。这些是从网上找到的资料，因为有时很长时间不会用到，当要用的时候经常弄混了，所以放到这里方便使用。<br>which       查看可执行文件的位置<br>whereis    查看文件的位置<br>locate       配 合数据库查看文件位置<br>find          实际搜寻硬盘查询文件名称 </p>
+<p>1、which<br>语法： </p>
+<p><pre><br>[root@redhat ~]# which 可执行文件名称<br></pre><br>例如： </p>
+<p><pre><br>[root@redhat ~]# which passwd<br>/usr/bin/passwd<br></pre><br>which是通过 PATH环境变量到该路径内查找可执行文件，所以基本的功能是寻找可执行文件 </p>
+<p>2、whereis<br>语法：<br>[root@redhat ~]# whereis [-bmsu] 文件或者目录名称<br>参数说 明：<br>-b ： 只找二进制文件<br>-m： 只找在说明文件manual路径下的文件<br>-s ： 只找source源文件<br>-u ： 没有说明文档的文件<br>例如： </p>
+<p><pre><br>[root@redhat ~]# whereis passwd<br>passwd: /usr/bin/passwd /etc/passwd /usr/share/man/man1/passwd.1.gz /usr/share/man/man5/passwd.5.gz<br></pre><br>将和passwd文件相关的文件都查找出来 </p>
+<p><pre><br>[root@redhat ~]# whereis -b passwd<br>passwd: /usr/bin/passwd /etc/passwd<br></pre><br>只将二进制文件 查找出来 </p>
+<p>和find相比，whereis查找的速度非常快，这是因为linux系统会将 系统内的所有文件都记录在一个数据库文件中，当使用whereis和下面即将介绍的locate时，会从数据库中查找数据，而不是像find命令那样，通 过遍历硬盘来查找，效率自然会很高。<br>但是该数据库文件并不是实时更新，默认情况下时一星期更新一次，因此，我们在用whereis和locate 查找文件时，有时会找到已经被删除的数据，或者刚刚建立文件，却无法查找到，原因就是因为数据库文件没有被更新。 </p>
+<p>3、 locate<br>语法： </p>
+<p><pre><br>[root@redhat ~]# locate 文件或者目录名称<br></pre><br>例 如： </p>
+<p><pre><br>[root@redhat ~]# locate passwd<br>/home/weblogic/bea/user_projects/domains/zhanggongzhe112/myserver/stage/_appsdir_DB_war/DB.war/jsp/as/user/passwd.jsp<br>/home/weblogic/bea/user_projects/domains/zhanggongzhe112/myserver/stage/_appsdir_admin_war/admin.war/jsp/platform/passwd.jsp<br>/lib/security/pam_unix_passwd.so<br>/lib/security/pam_passwdqc.so<br>/usr/include/rpcsvc/yppasswd.x<br>/usr/include/rpcsvc/yppasswd.h<br>/usr/lib/perl5/5.8.5/i386-linux-thread-multi/rpcsvc/yppasswd.ph<br>/usr/lib/kde3/kded_kpasswdserver.la<br>/usr/lib/kde3/kded_kpasswdserver.so<br>/usr/lib/ruby/1.8/webrick/httpauth/htpasswd.rb<br>/usr/bin/vncpasswd<br>/usr/bin/userpasswd<br>/usr/bin/yppasswd<br>…………<br></pre><br>4、 find<br>语法： </p>
+<p><pre><br>[root@redhat ~]# find 路径 参数<br></pre><br>参 数说明：<br>时间查找参数： </p>
+<p><pre><br>-atime n :将n<em>24小时内存取过的的文件列出来<br>-ctime n :将n</em>24小时内改变、新增的文件或者目录列出来<br>-mtime n :将n*24小时内修改过的文件或者目录列出来<br>-newer file ：把比file还要新的文件列出来<br></pre><br>名称查找参数： </p>
+<p><pre><br>-gid n       ：寻找群组ID为n的文件<br>-group name  ：寻找群组名称为name的文件<br>-uid n       ：寻找拥有者ID为n的文件<br>-user name   ：寻找用户者名称为name的文件<br>-name file   ：寻找文件名为file的文件（可以使用通配符）<br></pre><br>例 如： </p>
+<p><pre><br>[root@redhat ~]# find / -name zgz<br>/home/zgz<br>/home/zgz/zgz<br>/home/weblogic/bea/user_projects/domains/zgz<br>/home/oracle/product/10g/cfgtoollogs/dbca/zgz<br>/home/oracle/product/10g/cfgtoollogs/emca/zgz<br>/home/oracle/oradata/zgz </pre></p>
+<p>[root@redhat ~]# find / -name ‘<em>zgz</em>‘<br>/home/zgz<br>/home/zgz/zgz1<br>/home/zgz/zgzdirzgz<br>/home/zgz/zgz<br>/home/zgz/zgzdir<br>/home/weblogic/bea/user_projects/domains/zgz<br>/home/weblogic/bea/user_projects/domains/zgz/zgz.log00006<br>/home/weblogic/bea/user_projects/domains/zgz/zgz.log00002<br>/home/weblogic/bea/user_projects/domains/zgz/zgz.log00004<br>/home/weblogic/bea/user_projects/domains/zgz/zgz.log<br>/home/weblogic/bea/user_projects/domains/zgz/zgz.log00008<br>/home/weblogic/bea/user_projects/domains/zgz/zgz.log00005<br><br>当我们用whereis和locate无法查找到我们需要的文件时，可以使用find，但是find是在硬盘上遍历查 找，因此非常消耗硬盘的资源，而且效率也非常低，因此建议大家优先使用whereis和locate。<br>locate 是在数据库里查找，数据库大至每天更新一次。<br>whereis 可以找到可执行命令和man page<br>find 就是根据条件查找文件。<br>which 可以找到可执行文件和别名(alias) </p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/15/unix-e4-b8-ad-e4-b8-80-e4-ba-9b-e6-9c-89-e7-94-a8-e7-9a-84-e9-85-8d-e7-bd-ae-e6-96-87-e4-bb-b6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Unix中一些有用的配置文件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/12/linux-e5-bd-93-e4-b8-ad-e7-9a-84-e7-94-a8-e6-88-b7-e5-92-8c-e7-94-a8-e6-88-b7-e7-bb-84/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux当中的用户和用户组</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="linux-e4-b8-8bwhich-e3-80-81whereis-e3-80-81locate-e3-80-81find-e5-91-bd-e4-bb-a4-e7-9a-84-e5-8c-ba-e5-88-ab" data-title="Linux下which、whereis、locate、find 命令的区别 " data-url="http://blog.bradywang.com/2014/12/13/linux-e4-b8-8bwhich-e3-80-81whereis-e3-80-81locate-e3-80-81find-e5-91-bd-e4-bb-a4-e7-9a-84-e5-8c-ba-e5-88-ab/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Brady
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
